@@ -1,0 +1,79 @@
+{
+  "name": "rollup-ts-sass-template",
+  "version": "1.0.0",
+  "description": "this is rollup typescript sass template",
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "umd": "./dist/index.umd.js",
+  "types": "./dist/types/index.d.ts",
+  "scripts": {
+    "dev": "npm run lint && rollup -w -c ./config/rollup.config.dev.js",
+    "clean:dist": "rimraf dist",
+    "build:types": "npm run clean:dist && tsc -b ./tsconfig.types.json",
+    "build": "npm run build:types && npm run lint && rollup -c ./config/rollup.config.prod.js",
+    "test": "node test/test.js",
+    "pretest": "npm run build",
+    "lint": "eslint --fix --ext .ts,tsx,.js src"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/indeexx/rollup-ts-sass-template.git"
+  },
+  "keywords": [
+    "indeex",
+    "rollup",
+    "typescript",
+    "sass"
+  ],
+  "author": "indeex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indeexx/rollup-ts-sass-template/issues"
+  },
+  "homepage": "https://github.com/indeexx/rollup-ts-sass-template#readme",
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/plugin-transform-runtime": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "@rollup/plugin-alias": "^3.1.9",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@types/react": "^18.0.13",
+    "@types/react-dom": "^18.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "autoprefixer": "^10.4.7",
+    "core-js": "^3.23.1",
+    "eslint": "^8.17.0",
+    "eslint-plugin-react": "^7.30.0",
+    "node-sass": "^7.0.1",
+    "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
+    "regenerator-runtime": "^0.13.9",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.75.6",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-prettier": "^2.2.2",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.32.1",
+    "rollup-plugin-uglify": "^6.0.4",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "rollup": "^2.75.6"
+  },
+  "browserslist": [
+    "defaults",
+    "not ie < 8",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ]
+}
