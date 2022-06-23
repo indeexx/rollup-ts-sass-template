@@ -704,7 +704,7 @@ config.plugins = [
     ...config.plugins,
     serve({
         open: true,
-        contentBase: 'public',
+        contentBase: 'dist',
         host: 'localhost',
         port: 9999,
         onListening: (server) => {
