@@ -676,18 +676,6 @@ plugins: [
 ```
 
 
-修改*index.html*文件：
-
-```html
-<!-- ... -->
-<body>
-    <div id="root"></div>
-    <script src="./index.esm.js"></script>
-</body>
-<!-- ... -->
-```
-
-
 
 ### 开发环境和生产环境
 
