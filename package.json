@@ -54,6 +54,7 @@
     "regenerator-runtime": "^0.13.9",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.6",
+    "rollup-plugin-gen-html": "^0.2.7",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-prettier": "^2.2.2",

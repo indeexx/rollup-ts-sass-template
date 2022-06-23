@@ -12,8 +12,10 @@ const indexPath = 'public/index.html'
 config.plugins = [
     ...config.plugins,
     serve({
-        host: "localhost",
-        port: 9998,
+        open: true,
+        contentBase: 'public',
+        host: 'localhost',
+        port: 9999,
         onListening: (server) => {
             const address = server.address()
             const host = address.address === '::' ? 'localhost' : address.address

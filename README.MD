@@ -645,14 +645,54 @@ plugins: [
 在根目录下新建*public*文件夹，在此文件夹下新建*index.html*文件，配置页面中的logo icon
 
 
-运行*npm run build*会启动本地服务器并打开浏览器，并看到页面
+### 打包html
+
+
+运行*npm run build*会启动本地服务器并打开浏览器，并看到页面，但是页面不会被打包到dist文件夹中
+
+
+```bash
+npm i -D rollup-plugin-gen-html
+```
+
+
+
+修改*rollup.config.js*文件：
+
+```javascript
+//...
+import html from 'rollup-plugin-gen-html'
+
+//...
+plugins: [
+    //...
+    html({
+        template: 'public/index.html',
+        target: './../dist/index.html',
+        hash: productEnv,
+        replaceToMinScripts: productEnv
+    })
+]
+```
+
+
+修改*index.html*文件：
+
+```html
+<!-- ... -->
+<body>
+    <div id="root"></div>
+    <script src="./index.esm.js"></script>
+</body>
+<!-- ... -->
+```
 
 
 
 ### 开发环境和生产环境
 
 
-在根目录下新建*rollup.config.dev.js*文件：
+将*rollup.config.js*的*serve*去掉，并在根目录下新建*rollup.config.dev.js*文件：
 
 ```javascript
 import serve from 'rollup-plugin-serve'
@@ -663,8 +703,10 @@ const indexPath = 'public/index.html'
 config.plugins = [
     ...config.plugins,
     serve({
-        host: "localhost",
-        port: 9998,
+        open: true,
+        contentBase: 'public',
+        host: 'localhost',
+        port: 9999,
         onListening: (server) => {
             const address = server.address()
             const host = address.address === '::' ? 'localhost' : address.address
@@ -676,6 +718,7 @@ config.plugins = [
 
 module.exports = config
 ```
+
 
 
 在根目录下新建*rollup.config.prod.js*文件：

@@ -22,6 +22,8 @@ import alias from '@rollup/plugin-alias'
 
 import prettier from 'rollup-plugin-prettier'
 
+import html from 'rollup-plugin-gen-html'
+
 const prettierConfig = path.resolve(path.resolve(__dirname), '..', '.prettierrc.js');
 
 const env = process.env.NODE_ENV
@@ -43,7 +45,7 @@ const processSass = (context, payload) => {
 }
 
 const config = {
-    input: path.resolve( path.resolve(__dirname), '..', 'src/main.ts'),
+    input: path.resolve(path.resolve(__dirname), '..', 'src/main.ts'),
     output: [
         //commonjs
         {
@@ -83,12 +85,12 @@ const config = {
                 autoprefixer(),
             ],
         }),
-        serve({
-            open: true,
-            contentBase: 'public',
-            host: 'localhost',
-            port: 9999,
-        }),
+        // serve({
+        //     open: true,
+        //     contentBase: 'public',
+        //     host: 'localhost',
+        //     port: 9999,
+        // }),
         alias({
             entries: [
                 {
@@ -103,6 +105,12 @@ const config = {
             customResolver,
         }),
         prettier(prettierConfig),
+        html({
+            template: 'public/index.html',
+            target: './../dist/index.html',
+            hash: productEnv,
+            replaceToMinScripts: productEnv
+        })
     ],
 }
 
